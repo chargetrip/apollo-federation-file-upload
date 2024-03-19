@@ -1,6 +1,6 @@
 {
   "name": "@chargetrip/apollo-federation-upload",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "homepage": "https://chargetrip.com/",
@@ -36,7 +36,8 @@
     "lodash.set": "^4.3.2"
   },
   "peerDependencies": {
-    "@apollo/gateway": "^2.7.1"
+    "@apollo/gateway": "^2.7.1",
+    "apollo-server-env": "^4.2.1"
   },
   "devDependencies": {
     "@apollo/gateway": "^2.7.1",
@@ -50,7 +51,6 @@
     "@typescript-eslint/parser": "^6.0.0",
     "apollo-graphql": "^0.9.7",
     "apollo-server-core": "^3.12.0",
-    "apollo-server-env": "^4.2.1",
     "apollo-server-express": "^3.12.0",
     "eslint": "^8.44.0",
     "eslint-config-airbnb-base": "^15.0.0",
