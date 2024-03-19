@@ -1,6 +1,7 @@
 node_modules
 build
 .vscode
+.npmrc
 .eslintcache
 yarn-error.log
 .docker-secret*

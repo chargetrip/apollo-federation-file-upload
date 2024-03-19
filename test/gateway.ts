@@ -1,8 +1,5 @@
 import { ApolloServer } from 'apollo-server-express';
-import {
-  ApolloGateway,
-  IntrospectAndCompose,
-} from '@apollo/gateway';
+import { ApolloGateway, IntrospectAndCompose } from '@apollo/gateway';
 import {
   ApolloServerPluginInlineTraceDisabled,
   ApolloServerPluginLandingPageDisabled,
