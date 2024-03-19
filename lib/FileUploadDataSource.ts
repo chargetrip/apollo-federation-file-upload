@@ -90,6 +90,17 @@ const addDataToForm: AddDataHandler = (
 export default class FileUploadDataSource extends RemoteGraphQLDataSource {
   fetcher: FetchInterface;
 
+  private static isUpload(obj: Upload): boolean {
+    return (
+      !!obj &&
+      !!obj?.file &&
+      typeof obj?.resolve === 'function' &&
+      typeof obj?.reject === 'function' &&
+      obj?.promise instanceof Promise &&
+      typeof obj?.file?.createReadStream === 'function'
+    );
+  }
+
   private static extractFileVariables(
     rootVariables?: Variables,
   ): FileVariablesTuple[] {
@@ -101,16 +112,13 @@ export default class FileUploadDataSource extends RemoteGraphQLDataSource {
         (acc: FileVariablesTuple[], [name, value]): FileVariablesTuple[] => {
           const p = prefix ? `${prefix}.` : '';
           const key = `${p}${name}`;
-          if (value instanceof Promise || value instanceof Upload) {
-            acc.push([
-              key,
-              value instanceof Upload ? (value as Upload).promise : value,
-            ]);
+          if (FileUploadDataSource.isUpload(value as Upload)) {
+            acc.push([key, (value as Upload)?.promise || value]);
             return acc;
           }
           if (Array.isArray(value)) {
             const [first] = value;
-            if (first instanceof Promise || first instanceof Upload) {
+            if (FileUploadDataSource.isUpload(first as Upload)) {
               return acc.concat(
                 value.map(
                   (
@@ -118,7 +126,7 @@ export default class FileUploadDataSource extends RemoteGraphQLDataSource {
                     idx: number,
                   ): FileVariablesTuple => [
                     `${key}.${idx}`,
-                    v instanceof Upload ? v.promise : v,
+                    (v as Upload)?.promise || v,
                   ],
                 ),
               );

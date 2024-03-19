@@ -1,12 +1,16 @@
 {
-  "name": "@profusion/apollo-federation-upload",
+  "name": "@chargetrip/apollo-federation-upload",
   "version": "4.2.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "author": "Guilherme Iscaro (iscaro@profusion.mobi)",
-  "repository": "https://github.com/profusion/apollo-federation-file-upload",
+  "homepage": "https://chargetrip.com/",
+  "author": "Chargetrip <dev@chargetrip.com>",
+  "repository": "https://github.com/chargetrip/apollo-federation-file-upload",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "apollo",
     "federation",
@@ -16,11 +20,11 @@
     "upload"
   ],
   "scripts": {
-    "prepare": "husky install",
     "check-types": "tsc --noEmit",
     "run-lint": "eslint --max-warnings=0 --ext .ts lib",
     "lint": "run-s check-types run-lint",
     "build": "tsc",
+    "watch": "tsc-watch --onSuccess tsc",
     "prepublishOnly": "tsc",
     "test": "nyc ts-node ./test/index.ts"
   },
@@ -39,8 +43,8 @@
     "@apollo/gateway": "^2.1.1"
   },
   "devDependencies": {
-    "@apollo/gateway": "^2.1.1",
-    "@apollo/subgraph": "^2.0.4",
+    "@apollo/gateway": "^2.7.1",
+    "@apollo/subgraph": "^2.7.1",
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-angular": "^17.0.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
@@ -71,6 +75,7 @@
     "prettier": "^2.6.2",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.8.1",
+    "tsc-watch": "^6.0.4",
     "typescript": "^4.7.3"
   }
 }

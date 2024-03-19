@@ -27,7 +27,7 @@ the CSRF prevention feature enabled, and configure your upload clients to send a
 
 You can take a look at [Apollo's security guide](https://www.apollographql.com/docs/apollo-server/security/cors/#preventing-cross-site-request-forgery-csrf) for more details.
 
-#### How to enable CRSF Prevention
+## How to enable CRSF Prevention
 
 ```javascript
 import { ApolloServer } from 'apollo-server';
